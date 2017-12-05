@@ -7,13 +7,13 @@
 	<body>
 	<div class="label"> 
 	   Product Name: <input type="text" name="qname" id="prodname" placeholder="Epic TM Vascular"/><br>
-          Box Name: <input type="text" name="bname" id="boxname" /><br>
-	   Under Box Name: <input type="text" name="cname" id="underboxname" /><br>
-	   Description: <input type="text" name="dname" id="description" /><br>
-	   IFU: <input type="text" name="ename" id="ifu" /><br>
-	   Size Top: <input type="text" name="fname" id="top" /><br>
-	   Size Middle: <input type="text" name="gname" id="middle" /><br>
-	   Size Bottom: <input type="text" name="hname" id="bottom" /><br>
+          Box Name: <input type="text" name="bname" id="boxname" placeholder="OVER-THE-WIRE"/><br>
+	   Under Box Name: <input type="text" name="cname" id="underboxname"  placeholder="Self-Expanding Stent System"/><br>
+	   Description: <input type="text" name="dname" id="description" placeholder="Product Description: The Epic Vascular Self-Expanding Stent \n  System (Epic Stent System) is comprised of two components: \n  the implantable endoprosthesis and the stent delivery system."/><br>
+	   IFU: <input type="text" name="ename" id="ifu" placeholder="The current instructions for use are available on the web at \n  www.bostonscientific.com/Epic."/><br>
+	   Size Top: <input type="text" name="fname" id="top" placeholder="10 mm"/><br>
+	   Size Middle: <input type="text" name="gname" id="middle" placeholder="x 80 mm"/><br>
+	   Size Bottom: <input type="text" name="hname" id="bottom" placeholder="75 cm"/><br>
 <!-- 	   First name: <input type="text" name="iname" id="input_label" /><br>
 	   First name: <input type="text" name="jname" id="input_label" /><br>
 	   First name: <input type="text" name="kname" id="input_label" /><br>
@@ -22,7 +22,7 @@
 	   First name: <input type="text" name="nname" id="input_label" /><br>  -->
 <!--  product_name = "Epic   Vascular";
  box_name = "OVER-THE-WIRE";
- under_box_name = "Self-Expanding Stent System";
+ under_box_name = ;
  description =  "Product Description: The Epic Vascular Self-Expanding Stent \n  System (Epic Stent System) is comprised of two components: \n  the implantable endoprosthesis and the stent delivery system.";
  ifu =  "The current instructions for use are available on the web at \n  www.bostonscientific.com/Epic."; 
  size_top = "10 mm";
@@ -70,10 +70,24 @@
 			}
 			
 			function sendMessage() {
-			var input = document.getElementById("input_label").value;
+			var prodname = document.getElementById("prodname").value;
+			var boxname = document.getElementById("boxname").value;
+			var underboxname = document.getElementById("underboxname").value;
+			var description = document.getElementById("description").value;
+			var ifu = document.getElementById("ifu").value;
+			var top = document.getElementById("top").value;
+			var middle = document.getElementById("middle").value;
+			var bottom = document.getElementById("bottom").value;
 
 			console.log("input" + input);
-			  var j = '{ "test" : ' + input+ '}';
+			  var j = '{ "productName" : ' + prodname + '
+			  		, "boxName" " ' + boxname + '
+			  		, "underBoxName" " ' + underboxname + '
+			  		, "desc" " ' + desc + '
+			  		, "ifuDesc" " ' + ifu + '
+			  		, "top" " ' + top + '
+			  		, "middle" " ' + middle + '
+			  		, "bottom" " ' + bottom + '}';
 			  message = new Paho.MQTT.Message(j);
 			  message.destinationName = "pahodemo";
 			  client.send(message);
