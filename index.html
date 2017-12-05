@@ -1,0 +1,64 @@
+<html> 
+<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="paho-mqtt.js"></script>
+		
+</head>
+	<body>
+	<div class="label"> 
+	   First name: <input type="text" name="fname" id="input_label" /><br>
+		<button type="button" id="Upload Label" onClick="sendMessage()">Upload Label</button>
+	</div>
+	</body>
+	<script>
+			// Create a client instance
+			client = new Paho.MQTT.Client("m14.cloudmqtt.com", 36069, "jsclient");
+			
+
+			// set callback handlers
+			client.onConnectionLost = onConnectionLost;
+			client.onMessageArrived = onMessageArrived;
+
+			// connect the client
+			//client.connect({onSuccess:onConnect});
+			client.connect({
+				onSuccess: onConnect, 
+				userName : "xuijrmgi",
+				password : "xfTp6umWY9od",
+				cleanSession: true,
+				useSSL: true
+			});
+
+			// called when the client connects
+			function onConnect() {
+			  // Once a connection has been made, make a subscription and send a message.
+			  console.log("onConnect");
+			  client.subscribe("pahodemo", {qos: 1});			  
+			}
+
+			// called when the client loses its connection
+			function onConnectionLost(responseObject) {
+			  if (responseObject.errorCode !== 0) {
+				console.log("onConnectionLost:"+responseObject.errorMessage);
+			  }
+			}
+
+			// called when a message arrives
+			function onMessageArrived(message) {
+			  console.log("onMessageArrived:"+message.payloadString);
+			}
+			
+			function sendMessage() {
+			var input = document.getElementById("input_label").value;
+
+			console.log("input" + input);
+			  var j = '{ "test" : ' + input+ '}';
+			  message = new Paho.MQTT.Message(j);
+			  message.destinationName = "pahodemo";
+			  client.send(message);
+			  console.log("sendMessage:" + j);
+			}
+		
+		</script>
+
+</html>
