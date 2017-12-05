@@ -28,7 +28,7 @@
  size_top = "10 mm";
  size_middle = "x 80 mm";
  size_bottom = "75 cm" ; -->
-		<button type="button" id="Upload Label" onClick="sendMessage()"></button>
+		<button type="button" id="Upload Label" onClick="sendMessage()">Upload Label</button>
 	</div>
 	</body>
 	<script>
@@ -88,7 +88,7 @@
 // 			  		, "middle" " ' + middle + '
 // 			  		, "bottom" " ' + bottom + '}';
 				
-			var j = '{ "productName" : ' + prodname + '}';
+			var j = '{ "productName" : ' + prodname + ', "boxName" : ' + boxname+ '}';
 			  message = new Paho.MQTT.Message(j);
 			  message.destinationName = "pahodemo";
 			  client.send(message);
