@@ -14,6 +14,14 @@
 	   Size Top: <input type="text" name="fname" id="top" placeholder="10 mm"/><br>
 	   Size Middle: <input type="text" name="gname" id="middle" placeholder="x 80 mm"/><br>
 	   Size Bottom: <input type="text" name="hname" id="bottom" placeholder="75 cm"/><br>
+		
+	   GTIN: <input type="text" name="iname" id="gtin" placeholder="000000000"/><br>
+	   Ref: <input type="text" name="jname" id="ref" placeholder="12345678"/><br>
+	   Lot: <input type="text" name="kname" id="lot" placeholder="000000"/><br>
+	   Useby: <input type="text" name="lname" id="useby" placeholder="YYY-MM-DD"/><br>
+		
+		
+		
 <!-- 	   First name: <input type="text" name="iname" id="input_label" /><br>
 	   First name: <input type="text" name="jname" id="input_label" /><br>
 	   First name: <input type="text" name="kname" id="input_label" /><br>
@@ -78,6 +86,11 @@
 			var top = document.getElementById("top").value;
 			var middle = document.getElementById("middle").value;
 			var bottom = document.getElementById("bottom").value;
+				
+			var gtin = document.getElementById("gtin").value;
+			var ref = document.getElementById("ref").value;
+			var lot = document.getElementById("lot").value;
+			var useby = document.getElementById("useby").value;
 
 			console.log("input" + prodname);
 // 			  var j = '{ "productName" : ' + prodname
@@ -91,10 +104,17 @@
 			var j = '{ "productName" : ' + prodname + ', "boxName" : ' + boxname+ 
 			    ', "underBoxName" : ' + underboxname + ', "top" : ' + top + ', "middle" : ' +middle + 
 			    ',"bottom" : ' +bottom + '}';
+				
+			var k = '{ "gtin" : ' + gtin + ', "ref" : ' + ref+ 
+			    ', "lot" : ' + lot + ', "useby" : ' + useby +'}';
 			  message = new Paho.MQTT.Message(j);
 			  message.destinationName = "pahodemo";
+			bottommessage = new Paho.MQTT.Message(k);
+			bottommessage.destinationName = "bottomdemo";
 			  client.send(message);
+			client.send(bottommessage);
 			  console.log("sendMessage:" + j);
+				console.log("send bottom:" + k);
 			}
 		
 		</script>
