@@ -80,12 +80,15 @@
 			var bottom = document.getElementById("bottom").value;
 
 			console.log("input" + prodname);
-			  var j = '{ "productName" : ' + prodname + ', "boxName" : ' + boxname + '
-			  		, "underBoxName" : ' + underboxname + ', "desc": ' + desc + '
-			  		, "ifuDesc" + ifu + '
-			  		, "top"  + top + '
-			  		, "middle" " ' + middle + '
-			  		, "bottom" " ' + bottom + '}';
+// 			  var j = '{ "productName" : ' + prodname
+// 			  		+ ', "boxName" : ' + boxname + '
+// 			  		, "underBoxName" : ' + underboxname + ', "desc": ' + desc + '
+// 			  		, "ifuDesc" + ifu + '
+// 			  		, "top"  + top + '
+// 			  		, "middle" " ' + middle + '
+// 			  		, "bottom" " ' + bottom + '}';
+				
+			var j = '{ "productName" : ' + prodname + '}';
 			  message = new Paho.MQTT.Message(j);
 			  message.destinationName = "pahodemo";
 			  client.send(message);
