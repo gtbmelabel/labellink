@@ -88,10 +88,10 @@
 // 			  		, "middle" " ' + middle + '
 // 			  		, "bottom" " ' + bottom + '}';
 				
-			var j = '{ "productName" : ' + prodname + ', "boxName" : ' + boxname+ '
-			, "underBoxName" : ' + underboxname + ', "desc":' + desc + '
-			,"ifuDesc" :' + ifu +', "top" : ' + top + ', "middle" : ' +middle + '
-			,"bottom" : ' +bottom + '}';
+			var j = '{ "productName" : ' + prodname + ', "boxName" : ' + boxname+ 
+			    ', "underBoxName" : ' + underboxname + ', "desc":' + desc + 
+			    ',"ifuDesc" :' + ifu +', "top" : ' + top + ', "middle" : ' +middle + 
+			    ',"bottom" : ' +bottom + '}';
 			  message = new Paho.MQTT.Message(j);
 			  message.destinationName = "pahodemo";
 			  client.send(message);
