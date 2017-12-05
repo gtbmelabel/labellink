@@ -6,7 +6,7 @@
 </head>
 	<body>
 	<div class="label"> 
-	   Product Name: <input type="text" name="qname" id="prodname" placeholder="Epic TM Vascular"/><br>
+<!-- 	   Product Name: <input type="text" name="qname" id="prodname" placeholder="Epic TM Vascular"/><br> -->
           Box Name: <input type="text" name="bname" id="boxname" placeholder="OVER-THE-WIRE"/><br>
 	   Under Box Name: <input type="text" name="cname" id="underboxname"  placeholder="Self-Expanding Stent System"/><br>
 	   Description: <input type="text" name="dname" id="description" placeholder="Product Description: The Epic Vascular Self-Expanding Stent \n  System (Epic Stent System) is comprised of two components: \n  the implantable endoprosthesis and the stent delivery system."/><br>
@@ -78,7 +78,7 @@
 			}
 			
 			function sendMessage() {
-			var prodname = document.getElementById("prodname").value;
+// 			var prodname = document.getElementById("prodname").value;
 			var boxname = document.getElementById("boxname").value;
 			var underboxname = document.getElementById("underboxname").value;
 			var description = document.getElementById("description").value;
@@ -92,7 +92,7 @@
 			var lot = document.getElementById("lot").value;
 			var useby = document.getElementById("useby").value;
 
-			console.log("input" + prodname);
+// 			console.log("input" + prodname);
 // 			  var j = '{ "productName" : ' + prodname
 // 			  		+ ', "boxName" : ' + boxname + '
 // 			  		, "underBoxName" : ' + underboxname + ', "desc": ' + desc + '
@@ -101,7 +101,7 @@
 // 			  		, "middle" " ' + middle + '
 // 			  		, "bottom" " ' + bottom + '}';
 				
-			var j = '{ "productName" : ' + prodname + ', "boxName" : ' + boxname+ 
+			var j = '{ "boxName" : ' + boxname+ 
 			    ', "underBoxName" : ' + underboxname + ', "top" : ' + top + ', "middle" : ' +middle + 
 			    ',"bottom" : ' +bottom + '}';
 				
