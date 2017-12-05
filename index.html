@@ -89,8 +89,7 @@
 // 			  		, "bottom" " ' + bottom + '}';
 				
 			var j = '{ "productName" : ' + prodname + ', "boxName" : ' + boxname+ 
-			    ', "underBoxName" : ' + underboxname + ', "desc":' + description + 
-			    ',"ifuDesc" :' + ifu +', "top" : ' + top + ', "middle" : ' +middle + 
+			    ', "underBoxName" : ' + underboxname + ', "top" : ' + top + ', "middle" : ' +middle + 
 			    ',"bottom" : ' +bottom + '}';
 			  message = new Paho.MQTT.Message(j);
 			  message.destinationName = "pahodemo";
