@@ -1,42 +1,30 @@
 <html> 
 <head>
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="style.css"/>
 		<script src="paho-mqtt.js"></script>
 		
 </head>
 	<body>
+	<div class="img">
+
+		<div class="top-left">
+			<input type="text" name="bname" id="boxname" placeholder="OVER-THE-WIRE"/><br>
+         	<input type="text" name="bname" id="boxname" placeholder="OVER-THE-WIRE"/><br>
+	      	<input type="text" name="cname" id="underboxname"  placeholder="Self-Expanding Stent System"/><br>
+			<textarea name="test" id="description" rows="4" placeholder="Product Description: The Epic Vascular Self-Expanding Stent System (Epic Stent System) is comprised of two components: the implantable endoprosthesis and the stent delivery system."></textarea>
+	  	 	<textarea name="ename" id="ifu" rows="2" placeholder="The current instructions for use are available on the web at www.bostonscientific.com/Epic."></textarea>
+	   		<input type="text" name="fname" id="top" placeholder="10 mm"/><br>
+	   		<input type="text" name="gname" id="middle" placeholder="x 80 mm"/><br>
+	    	<input type="text" name="hname" id="bottom" placeholder="75 cm"/><br>
+		
+	    	<input type="text" name="iname" id="gtin" placeholder="000000000"/><br>
+	   		<input type="text" name="jname" id="ref" placeholder="12345678"/><br>
+	  		<input type="text" name="kname" id="lot" placeholder="000000"/><br>
+	   		<input type="text" name="lname" id="useby" placeholder="YYYY-MM-DD"/><br>
+		</div>
+	</div>
 	<div class="label"> 
-<!-- 	   Product Name: <input type="text" name="qname" id="prodname" placeholder="Epic TM Vascular"/><br> -->
-          Box Name: <input type="text" name="bname" id="boxname" placeholder="OVER-THE-WIRE"/><br>
-	   Under Box Name: <input type="text" name="cname" id="underboxname"  placeholder="Self-Expanding Stent System"/><br>
-	   Description: <input type="text" name="dname" id="description" placeholder="Product Description: The Epic Vascular Self-Expanding Stent \n  System (Epic Stent System) is comprised of two components: \n  the implantable endoprosthesis and the stent delivery system."/><br>
-	   IFU: <input type="text" name="ename" id="ifu" placeholder="The current instructions for use are available on the web at \n  www.bostonscientific.com/Epic."/><br>
-	   Size Top: <input type="text" name="fname" id="top" placeholder="10 mm"/><br>
-	   Size Middle: <input type="text" name="gname" id="middle" placeholder="x 80 mm"/><br>
-	   Size Bottom: <input type="text" name="hname" id="bottom" placeholder="75 cm"/><br>
-		
-	   GTIN: <input type="text" name="iname" id="gtin" placeholder="000000000"/><br>
-	   Ref: <input type="text" name="jname" id="ref" placeholder="12345678"/><br>
-	   Lot: <input type="text" name="kname" id="lot" placeholder="000000"/><br>
-	   Useby: <input type="text" name="lname" id="useby" placeholder="YYY-MM-DD"/><br>
-		
-		
-		
-<!-- 	   First name: <input type="text" name="iname" id="input_label" /><br>
-	   First name: <input type="text" name="jname" id="input_label" /><br>
-	   First name: <input type="text" name="kname" id="input_label" /><br>
-	   First name: <input type="text" name="lname" id="input_label" /><br>
-	   First name: <input type="text" name="mname" id="input_label" /><br>
-	   First name: <input type="text" name="nname" id="input_label" /><br>  -->
-<!--  product_name = "Epic   Vascular";
- box_name = "OVER-THE-WIRE";
- under_box_name = ;
- description =  "Product Description: The Epic Vascular Self-Expanding Stent \n  System (Epic Stent System) is comprised of two components: \n  the implantable endoprosthesis and the stent delivery system.";
- ifu =  "The current instructions for use are available on the web at \n  www.bostonscientific.com/Epic."; 
- size_top = "10 mm";
- size_middle = "x 80 mm";
- size_bottom = "75 cm" ; -->
-		<button type="button" id="Upload Label" onClick="sendMessage()">Upload Label</button>
+		<button type="button" id="UploadLabel" onClick="sendMessage()">Upload Label</button>
 	</div>
 	</body>
 	<script>
@@ -79,18 +67,18 @@
 			
 			function sendMessage() {
 // 			var prodname = document.getElementById("prodname").value;
-			var boxname = document.getElementById("boxname").value;
-			var underboxname = document.getElementById("underboxname").value;
-			var description = document.getElementById("description").value;
-			var ifu = document.getElementById("ifu").value;
-			var top = document.getElementById("top").value;
-			var middle = document.getElementById("middle").value;
-			var bottom = document.getElementById("bottom").value;
+			var boxname = '"'+ document.getElementById("boxname").value + '"';
+			var underboxname = '"' + document.getElementById("underboxname").value + '"';
+			var description = '"' + document.getElementById("description").value + '"';
+			var ifu = '"' + document.getElementById("ifu").value + '"';
+			var top = '"' + document.getElementById("top").value + '"';
+			var middle = '"' + document.getElementById("middle").value + '"';
+			var bottom = '"' + document.getElementById("bottom").value + '"';
 				
-			var gtin = document.getElementById("gtin").value;
-			var ref = document.getElementById("ref").value;
-			var lot = document.getElementById("lot").value;
-			var useby = document.getElementById("useby").value;
+			var gtin = '"' + document.getElementById("gtin").value + '"';
+			var ref = '"' + document.getElementById("ref").value + '"';
+			var lot = '"' + document.getElementById("lot").value + '"';
+			var useby = '"' + document.getElementById("useby").value + '"';
 
 // 			console.log("input" + prodname);
 // 			  var j = '{ "productName" : ' + prodname
@@ -102,7 +90,10 @@
 // 			  		, "bottom" " ' + bottom + '}';
 				
 			var j = '{ "boxName" : ' + boxname+ 
-			    ', "underBoxName" : ' + underboxname + ', "top" : ' + top + ', "middle" : ' +middle + 
+			    ', "underBoxName" : ' + underboxname + 
+				', "desc" : ' + description +	
+				', "top" : ' + top + 
+				', "middle" : ' + middle + 
 			    ',"bottom" : ' +bottom + '}';
 				
 			var k = '{ "gtin" : ' + gtin + ', "ref" : ' + ref+ 
